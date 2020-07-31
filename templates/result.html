@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>Diabetes Prediction</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+
+<body onload="slider()">
+	<div class="banner">
+		<div class="slider">
+			<img src="{{ url_for('static', filename='images/img6.jpg') }}" id="slideimg">
+		</div>
+		<div class="overlay">
+			<div class="navbar">
+				<div class="logo">
+					<img src="{{ url_for('static', filename='images/med_1.png') }}">
+						
+				</div>
+					
+				<div class="content">
+					<h1>LET'S SEE YOUR RESULT<h1>
+					<h3>A Machine Learning Web App, Built with Flask, Deployed using Heroku</h3>
+						
+				</div>
+
+			</div>
+
+
+			<!-- Result -->
+			<div class="results">
+				<div class="content1">
+				{% if prediction==1 %}
+					<h4>Prediction: <span class='danger'>Sorry! You have Diabetes.</span></h4>
+				{% elif prediction==0 %}
+					<h5>Prediction: <span class='safe'>Great! You DON'T have Diabetes.</span></h5>
+					
+				{% endif %}
+				</div>
+			</div>
+
+			<!-- Footer -->
+	       	<div class='footer'>
+	           <div class="contact">
+	               <a target="_blank" href="https://github.com/akshay2302/Machine_Learning-Projects"><i class="fab fa-github fa-lg contact-icon"></i></a>
+	               <a target="_blank" href="https://www.linkedin.com/in/akshay-prasad-678340188/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+	           </div>
+	           <p class='footer-description'>Design by Akshay.</p>
+	       	</div>
+
+	    </div>
+    </div>
+
+    <script>
+	 var slideimg = document.getElementById("slideimg");
+
+	 var images = new Array(
+	 		"{{ url_for('static', filename='images/img6.jpg') }}",
+	 		"{{ url_for('static', filename='images/img7.jpg') }}",
+	 		"{{ url_for('static', filename='images/img8.jpg') }}",
+	 		"{{ url_for('static', filename='images/img11.jpg') }}",
+	 		"{{ url_for('static', filename='images/img12.jpg') }}"
+	 	);
+
+	 var len = images.length;
+	 var i = 0;
+
+	 function slider(){
+	 	if(i > len-1){
+	 		i = 0;
+	 	}
+	 	slideimg.src = images[i];
+	 	i++;
+	 	setTimeout('slider()',3000);
+	 }
+
+
+	</script>
+
+
+</body>
+</html>

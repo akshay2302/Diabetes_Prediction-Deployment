@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Diabetes Prediction</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body onload="slider()">
+	<div class="banner">
+		<div class="slider">
+			<img src="{{ url_for('static', filename='images/img3.jpg') }}" alt="medical" id="slideimg">
+		</div>
+		<div class="overlay">
+			<div class="navbar">
+				<div class="logo">
+					<img src="{{ url_for('static', filename='images/med_1.png') }}">
+					
+				</div>
+				
+				<div class="content">
+					<h1>LET'S CHECK YOUR DIABETES HERE!!!<h1>
+					<h3>Blood glucose is your main source of energy </h3>
+					
+				</div>
+
+			</div>
+
+
+			<!-- Text Area -->
+    			<div class="ml-container">
+    				<form action="{{ url_for('predict') }}" method="POST">
+                	<input class="form-input" type="text" name="pregnancies" placeholder="Number of Pregnancies eg. 0"><br>
+                	<input class="form-input" type="text" name="glucose" placeholder="Glucose (mg/dL) eg. 80"><br>
+                	<input class="form-input" type="text" name="bloodpressure" placeholder="Blood Pressure (mmHg) eg. 80"><br>
+                	<input class="form-input" type="text" name="skinthickness" placeholder="Skin Thickness (mm) eg. 20"><br>
+                	<input class="form-input" type="text" name="insulin" placeholder="Insulin Level (IU/mL) eg. 80"><br>
+                	<input class="form-input" type="text" name="bmi" placeholder="Body Mass Index (kg/m²) eg. 23.1"><br>
+                	<input class="form-input" type="text" name="dpf" placeholder="Diabetes Pedigree Function eg. 0.52"><br>
+                	<input class="form-input" type="text" name="age" placeholder="Age (years) eg. 34"><br>
+
+                		<input type="submit" class="button" value="PREDICT">
+        			</form>
+
+    			</div>
+
+    		
+    		<!-- Footer -->
+        		<div class='footer'>
+           			<div class="contact">
+               			<a target="_blank" href="https://github.com/akshay2302/Machine_Learning-Projects"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               			<a target="_blank" href="https://www.linkedin.com/in/akshay-prasad-678340188/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+
+           			</div>
+
+           			<p class='footer-description'>Design by Akshay.</p>
+
+       			</div>
+	
+
+			
+		</div>
+	</div>
+
+	<script>
+	 var slideimg = document.getElementById("slideimg");
+
+	 var images = new Array(
+	 		"{{ url_for('static', filename='images/img1.jpg') }}",
+	 		"{{ url_for('static', filename='images/img2.jpg') }}",
+	 		"{{ url_for('static', filename='images/img3.jpg') }}",
+	 		"{{ url_for('static', filename='images/img4.jpg') }}",
+	 		"{{ url_for('static', filename='images/img5.jpg') }}"
+	 	);
+
+	 var len = images.length;
+	 var i = 0;
+
+	 function slider(){
+	 	if(i > len-1){
+	 		i = 0;
+	 	}
+	 	slideimg.src = images[i];
+	 	i++;
+	 	setTimeout('slider()',3000);
+	 }
+
+
+	</script>
+
+
+</body>
+</html>
